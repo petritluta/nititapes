@@ -4,7 +4,7 @@
   "info": {
     "singularName": "product-category",
     "pluralName": "product-categories",
-    "displayName": "ProductCategory",
+    "displayName": "Product Category",
     "description": ""
   },
   "options": {
@@ -41,6 +41,28 @@
         }
       },
       "component": "shared.seo"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }

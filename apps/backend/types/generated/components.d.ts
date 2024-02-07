@@ -1,5 +1,20 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SharedAttributeValue extends Schema.Component {
+  collectionName: 'components_shared_attribute_values';
+  info: {
+    displayName: 'Attribute Value';
+  };
+  attributes: {
+    product_attribute: Attribute.Relation<
+      'shared.attribute-value',
+      'oneToOne',
+      'api::product-attribute.product-attribute'
+    >;
+    value: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -54,6 +69,7 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'shared.attribute-value': SharedAttributeValue;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }
