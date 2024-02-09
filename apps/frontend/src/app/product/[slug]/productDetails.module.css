@@ -1,0 +1,78 @@
+.productLayout {
+  width: 100%;
+  display: flex;
+  position: relative;
+  gap: 20px;
+}
+.productLayout > div {
+  width: 50%;
+}
+.videoWrapper {
+  width: 60%;
+  margin: auto;
+}
+
+.productTable {
+  padding: 20px 0px;
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+  gap: 0px;
+}
+.productTable span {
+  width: 100%;
+  background-color: #efefef;
+  padding: 5px 10px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+.productTable p {
+  padding: 5px 10px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-top: none;
+  display: flex;
+  align-items: center;
+}
+.productTable > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.gallery {
+  top: 0;
+  position: sticky;
+  width: 100%;
+}
+@media only screen and (max-width: 900px) {
+  .productLayout > div {
+    width: 100%;
+  }
+  .productLayout {
+    flex-direction: column;
+  }
+  .productLayout > div {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .productLayout p {
+    font-size: var(--font-xs);
+  }
+  .productTable {
+    flex-direction: column;
+  }
+  .productTable > div {
+    flex-direction: row;
+  }
+  .productTable > div span,
+  .productTable > div p {
+    width: 50%;
+    border: 1px solid var(--border);
+  }
+  .videoWrapper {
+    width: 100%;
+  }
+}

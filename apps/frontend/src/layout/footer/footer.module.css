@@ -1,0 +1,43 @@
+.footerWrapper {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.locationIcon {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.locations div {
+  padding: 20px;
+  text-align: center;
+}
+
+.footerWrapper ul li {
+  padding: 5px 0px;
+  text-align: left !important;
+}
+
+.footerWrapper > div:last-child {
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+@media only screen and (max-width: 600px) {
+  .footerLinks{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .footerLinks>div{
+    width: 100%;
+    justify-content: space-between;
+    color: var(--main);
+  }
+  .footerWrapper {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,9 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0px;
+}
+.breadcrumb a:hover {
+  color: var(--main);
+}

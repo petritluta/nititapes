@@ -1,0 +1,14 @@
+.noImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  height: 100%;
+  color: var(--border);
+  font-size: 40px;
+}
+
+
+@media only screen and (max-width: 900px) {
+
+}

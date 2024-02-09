@@ -1,0 +1,22 @@
+.heading {
+  width: 70%;
+  padding: 50px 0px;
+  margin: auto;
+  text-align: center;
+}
+.heading p {
+  font-size: var(--font-md);
+}
+
+@media only screen and (max-width: 900px) {
+  .heading {
+    width: 90%;
+    padding: 50px 0px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .heading p {
+    font-size: var(--font-xs);
+  }
+}
