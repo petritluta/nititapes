@@ -1,20 +1,27 @@
 "use client";
 import React from "react";
 import Select from "react-select";
-import { SelectType, SelectOptions } from "@/@types/general/Select";
+import {
+  SelectType,
+  SelectOptions,
+  changeSelect,
+} from "@/@types/general/Select";
 
 export default function SelectComponent({
   data,
   defaultValue,
+  changeSelect,
 }: {
   data: SelectType;
   defaultValue: SelectOptions;
+  changeSelect: changeSelect;
 }) {
   return (
     <Select
       options={data}
       defaultValue={defaultValue}
       isSearchable={false}
+      onChange={(val: any) => changeSelect(val.value)}
       styles={{
         dropdownIndicator: dropdownIndicatorStyles,
         menu: menuStyles,

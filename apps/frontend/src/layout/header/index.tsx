@@ -1,9 +1,9 @@
 import Image from "next/image";
 import styles from "./header.module.css";
 import Link from "next/link";
-import Language from "@/component/custom/language";
 import Icon from "@/component/general/icon";
 import MobileHeader from "./MobileHeader";
+import Language from "@/component/custom/language";
 
 export default function Header() {
   return (
@@ -12,7 +12,7 @@ export default function Header() {
         <div className={styles.headerTopList}>
           <Link href="/">
             <Image
-              src="/logo.svg"
+              src="./logo.svg"
               alt="Niti Tape"
               className={styles.vercelLogo}
               width={150}
@@ -57,7 +57,7 @@ export default function Header() {
                 <Link href="/shelf">Shelf Planning</Link>
               </li>
               <li>
-                <Link href="/shelf">Where to find us?</Link>
+                <Link href="/store">Where to find us?</Link>
               </li>
             </ul>
           </div>

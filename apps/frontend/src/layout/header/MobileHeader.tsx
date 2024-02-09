@@ -46,7 +46,7 @@ export default function MobileHeader() {
                   <Link href="/shelf">Shelf Planning</Link>
                 </li>
                 <li>
-                  <Link href="/shelf">Where to find us?</Link>
+                  <Link href="/store">Where to find us?</Link>
                 </li>
               </ul>
             </div>

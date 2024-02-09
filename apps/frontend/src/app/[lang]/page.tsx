@@ -1,11 +1,21 @@
 import Grid from "@/component/general/grid";
-import styles from "./page.module.css";
 import Heading from "@/component/general/heading";
 import ProductBox from "@/component/custom/product/box";
 import ShelfPlanning from "@/layout/planning";
 import Promotion from "@/layout/promotion";
+import { NextPage } from "next";
+import { Locale } from "@/i18n-config";
+import { getDictionary } from "@/get-dictionary";
 
-export default function Home() {
+interface HomeProps {
+  params: {
+    lang: Locale;
+  };
+}
+
+const Home: NextPage<HomeProps> = async ({ params: { lang } }) => {
+  const l = await getDictionary(lang);
+
   const homeProducts = [
     {
       name: "Durable Airtight Products",
@@ -28,11 +38,11 @@ export default function Home() {
   ];
 
   return (
-    <main className={styles.main}>
+    <main>
       <div style={{ height: "40vh", backgroundColor: "#efefef" }}></div>
       <div className="container">
         <Heading
-          title={"Welcome to Niti Tape"}
+          title={l.text.welcome}
           desc={
             "We offer an extensive range of tapes, with professional solutions which always meet the highest quality standards. The HPX brand came into existence in 2004 and since then quality improvement and development are our absolute priority. Moreover, we can look back on more than 25 years of experience."
           }
@@ -51,4 +61,6 @@ export default function Home() {
       <ShelfPlanning />
     </main>
   );
-}
+};
+
+export default Home;
