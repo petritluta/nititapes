@@ -1148,6 +1148,52 @@ export interface ApiPromotionPromotion extends Schema.CollectionType {
   };
 }
 
+export interface ApiTestSingleTypeTestSingleType extends Schema.SingleType {
+  collectionName: 'test_single_types';
+  info: {
+    singularName: 'test-single-type';
+    pluralName: 'test-single-types';
+    displayName: 'Test single type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::test-single-type.test-single-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::test-single-type.test-single-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::test-single-type.test-single-type',
+      'oneToMany',
+      'api::test-single-type.test-single-type'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1172,6 +1218,7 @@ declare module '@strapi/types' {
       'api::product-attribute.product-attribute': ApiProductAttributeProductAttribute;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
       'api::promotion.promotion': ApiPromotionPromotion;
+      'api::test-single-type.test-single-type': ApiTestSingleTypeTestSingleType;
     }
   }
 }
