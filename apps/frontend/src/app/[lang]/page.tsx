@@ -6,6 +6,7 @@ import Promotion from "@/layout/promotion";
 import { NextPage } from "next";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
+import Banner from "@/layout/banner";
 
 interface HomeProps {
   params: {
@@ -39,7 +40,7 @@ const Home: NextPage<HomeProps> = async ({ params: { lang } }) => {
 
   return (
     <main>
-      <div style={{ height: "40vh", backgroundColor: "#efefef" }}></div>
+      <Banner/>
       <div className="container">
         <Heading
           title={l.text.welcome}
