@@ -4,8 +4,12 @@ import Link from "next/link";
 import Icon from "@/component/general/icon";
 import MobileHeader from "./MobileHeader";
 import Language from "@/component/custom/language";
+import getHeader from "@/fetchServices/header";
 
-export default function Header() {
+export default async function Header() {
+  const headerData = await getHeader();
+  console.log("headerData", headerData);
+
   return (
     <header className={styles.header}>
       <div className="container">
