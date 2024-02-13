@@ -4,11 +4,10 @@ import Link from "next/link";
 import Icon from "@/component/general/icon";
 import MobileHeader from "./MobileHeader";
 import Language from "@/component/custom/language";
-import getHeader from "@/fetchServices/header";
+import getHeader from "@/fetchServices/layout/header";
 
 export default async function Header() {
   const headerData = await getHeader();
-  console.log("headerData", headerData);
 
   return (
     <header className={styles.header}>
@@ -16,7 +15,7 @@ export default async function Header() {
         <div className={styles.headerTopList}>
           <Link href="/">
             <Image
-              src="./logo.svg"
+              src="/logo.svg"
               alt="Niti Tape"
               className={styles.vercelLogo}
               width={150}
@@ -49,7 +48,7 @@ export default async function Header() {
           <div className={styles.headerList}>
             <ul>
               <li>
-                <Link href="/product">Produkti</Link>
+                <Link href="/category">Shfleto Kategorite</Link>
               </li>
               <li>
                 <Link href="/catalog">Katalogu</Link>

@@ -7,6 +7,7 @@ import { NextPage } from "next";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
 import Banner from "@/layout/banner";
+import getHomepage from "@/fetchServices/page/homepage";
 
 interface HomeProps {
   params: {
@@ -16,6 +17,9 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = async ({ params: { lang } }) => {
   const l = await getDictionary(lang);
+  const {data} = await getHomepage();
+
+  console.log("HOME DATA", data);
 
   const homeProducts = [
     {
@@ -40,13 +44,11 @@ const Home: NextPage<HomeProps> = async ({ params: { lang } }) => {
 
   return (
     <main>
-      <Banner/>
+      <Banner />
       <div className="container">
         <Heading
-          title={l.text.welcome}
-          desc={
-            "We offer an extensive range of tapes, with professional solutions which always meet the highest quality standards. The HPX brand came into existence in 2004 and since then quality improvement and development are our absolute priority. Moreover, we can look back on more than 25 years of experience."
-          }
+          title={data.attributes.welcome_title}
+          desc={data.attributes.welcome_desc}
         />
         <Grid no={3}>
           {homeProducts.map((data, i) => (

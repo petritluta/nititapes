@@ -5,19 +5,20 @@
 
   --button-radius: 10px;
   --button-padding: 10px 30px;
+  --mobile-button-padding:10px 25px;
   --padding: 10px;
 
   --black: #181823;
-  --gray:#969696;
+  --gray: #969696;
   --white: #fff;
-  --main: #FC6736;
-  --light-main: #EFECEC;
+  --main: #fc6736;
+  --light-main: #efecec;
 
   --font-xxs: 11px;
   --font-xs: 13px;
   --font-md: 16px;
   --font-lg: 20px;
-  --font-ex-lg:22px;
+  --font-ex-lg: 22px;
 
   --transition: 0.5s;
 }
@@ -49,10 +50,12 @@ a {
   color: var(--black);
 }
 
-
 .container {
   width: 90%;
   margin: auto;
+}
+.relative {
+  position: relative;
 }
 
 .gap5 {
@@ -95,12 +98,12 @@ a {
   color: var(--main);
   font-weight: 400;
 }
-.title{
+.title {
   font-size: var(--font-lg);
-  padding-bottom:20px;
+  padding-bottom: 20px;
 }
 .grayWrapper {
-  padding:30px 0px;
+  padding: 30px 0px;
   background-color: var(--light-main);
   position: relative;
   border-radius: var(--button-radius);
@@ -111,10 +114,10 @@ a {
 }
 
 @media only screen and (max-width: 900px) {
-  h1{
+  h1 {
     font-size: var(--font-ex-lg);
   }
-  h2{
+  h2 {
     font-size: var(--font-md);
   }
 }

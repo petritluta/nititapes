@@ -1,0 +1,35 @@
+.box {
+  border-radius: var(--button-radius);
+  box-shadow: var(--box-shadow);
+  -webkit-border-radius: var(--button-radius);
+  -moz-border-radius: var(--button-radius);
+  -ms-border-radius: var(--button-radius);
+  -o-border-radius: var(--button-radius);
+  padding: var(--padding);
+  color: var(--black);
+}
+.boxImage {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border: 1px solid var(--border);
+  border-radius: var(--button-radius);
+  background-color: var(--light-main);
+}
+.boxImage img {
+  border-radius: var(--button-radius);
+  -webkit-border-radius: var(--button-radius);
+  -moz-border-radius: var(--button-radius);
+  -ms-border-radius: var(--button-radius);
+  -o-border-radius: var(--button-radius);
+}
+.box h2 {
+  padding:10px 0px;
+  text-align: center;
+  font-size: var(--font-md);
+}
+@media only screen and (max-width: 900px) {
+  .boxImage {
+    height: 130px;
+  }
+}

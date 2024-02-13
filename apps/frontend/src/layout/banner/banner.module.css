@@ -1,11 +1,46 @@
 .homeBanner {
-  height: 60vh;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
-
+.homeBanner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0.2;
+}
+.bannerText {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 2;
+}
+.bannerText h1 {
+  font-size: 40px;
+}
 @media only screen and (max-width: 900px) {
-  .homeBanner {
-    height: 30vh;
+  .anchorBanner{
+    flex-direction: column;
+  }
+  .homeBanner,
+  .bannerText {
+    background-position-x: center;
+  }
+  .homeBanner::after {
+    opacity: 0.6;
+  }
+  .bannerText {
+    text-align: center;
+    color: var(--white);
+  }
+  .bannerText h1 {
+    font-size: 30px;
   }
 }

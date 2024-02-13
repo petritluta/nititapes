@@ -1,4 +1,4 @@
-import fetchData from ".";
+import fetchData from "..";
 
 export default async function getHeader() {
   return fetchData("/homepage");
