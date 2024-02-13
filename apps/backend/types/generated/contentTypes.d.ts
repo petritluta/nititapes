@@ -818,7 +818,8 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
   info: {
     singularName: 'homepage';
     pluralName: 'homepages';
-    displayName: 'homepage';
+    displayName: 'Homepage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -829,7 +830,31 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     };
   };
   attributes: {
-    main_title: Attribute.String &
+    banner_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    banner_description: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    banner_image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    welcome_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    welcome_desc: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -854,6 +879,73 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
       'api::homepage.homepage',
       'oneToMany',
       'api::homepage.homepage'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiNavigationNavigation extends Schema.CollectionType {
+  collectionName: 'navigations';
+  info: {
+    singularName: 'navigation';
+    pluralName: 'navigations';
+    displayName: 'Navigation';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    isNewTab: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    orderNo: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToMany',
+      'api::navigation.navigation'
     >;
     locale: Attribute.String;
   };
@@ -1168,6 +1260,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::homepage.homepage': ApiHomepageHomepage;
+      'api::navigation.navigation': ApiNavigationNavigation;
       'api::product.product': ApiProductProduct;
       'api::product-attribute.product-attribute': ApiProductAttributeProductAttribute;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
