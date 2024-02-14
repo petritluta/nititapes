@@ -10,7 +10,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #000;
+  /* background: #000; */
   opacity: 0.2;
 }
 .bannerText {
@@ -25,14 +25,17 @@
 .bannerText h1 {
   font-size: 40px;
 }
-@media only screen and (max-width: 900px) {
-  .anchorBanner{
-    flex-direction: column;
-  }
+@media only screen and (max-width: 1200px) {
   .homeBanner,
   .bannerText {
     background-position-x: center;
   }
+}
+@media only screen and (max-width: 900px) {
+  .anchorBanner{
+    flex-direction: column;
+  }
+
   .homeBanner::after {
     opacity: 0.6;
   }

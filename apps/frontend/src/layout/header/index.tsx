@@ -4,7 +4,7 @@ import Link from "next/link";
 import Icon from "@/component/general/icon";
 import MobileHeader from "./MobileHeader";
 import Language from "@/component/custom/language";
-import getHeader from "@/fetchServices/layout/header";
+import getHeader from "@/fetchServices/server/layout/header";
 
 export default async function Header() {
   const headerData = await getHeader();

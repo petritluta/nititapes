@@ -7,7 +7,7 @@ import { NextPage } from "next";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
 import Banner from "@/layout/banner";
-import getHomepage from "@/fetchServices/page/homepage";
+import getHomepage from "@/fetchServices/server/page/homepage";
 
 interface HomeProps {
   params: {
@@ -17,10 +17,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = async ({ params: { lang } }) => {
   const l = await getDictionary(lang);
-  const {data} = await getHomepage();
-
-  console.log("HOME DATA", data);
-
+  const { data } = await getHomepage();
   const homeProducts = [
     {
       name: "Durable Airtight Products",
@@ -44,12 +41,15 @@ const Home: NextPage<HomeProps> = async ({ params: { lang } }) => {
 
   return (
     <main>
-      <Banner />
+      {/* <Banner
+        title={data.attributes.banner_title}
+        desc={data.attributes.banner_title}
+      /> */}
       <div className="container">
-        <Heading
+        {/* <Heading
           title={data.attributes.welcome_title}
           desc={data.attributes.welcome_desc}
-        />
+        /> */}
         <Grid no={3}>
           {homeProducts.map((data, i) => (
             <ProductBox

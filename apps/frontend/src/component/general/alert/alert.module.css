@@ -1,0 +1,21 @@
+.alertBox{
+    border-radius: var(--button-radius);
+    box-shadow: var(--box-shadow);
+    -webkit-border-radius: var(--button-radius);
+    -moz-border-radius: var(--button-radius);
+    -ms-border-radius: var(--button-radius);
+    -o-border-radius: var(--button-radius);
+    padding: var(--padding);
+    color: var(--black);
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: var(--font-lg);
+    text-transform: uppercase;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}

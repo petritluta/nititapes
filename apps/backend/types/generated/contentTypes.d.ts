@@ -1146,9 +1146,10 @@ export interface ApiProductCategoryProductCategory
         };
       }>;
     image: Attribute.Media &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     slug: Attribute.UID<'api::product-category.product-category', 'name'> &

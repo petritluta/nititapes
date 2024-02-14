@@ -1,26 +1,25 @@
 import CategoryBox from "@/component/custom/category/box/box";
 import Grid from "@/component/general/grid";
 import Heading from "@/component/general/heading";
+import getCategory from "@/fetchServices/server/page/category";
+import { NextPage } from "next";
+import { get, map, memoize } from "lodash";
+import AlertMessage from "@/component/general/alert";
 
-export default function Category() {
-  const catalog = [
-    {
-      name: "Durable Airtight Products",
-      img: "/image/catalog.jpeg",
-    },
-    {
-      name: "Duct tapes",
-      img: "/image/catalog.jpeg",
-    },
-    {
-      name: "Mounting tapes",
-      img: "/image/catalog.jpeg",
-    },
-    {
-        name: "Mounting tapes",
-        img: "/image/catalog.jpeg",
-      },
-  ];
+const Category: NextPage<any> = async ({ params: { lang } }) => {
+  const { data } = await getCategory("sq");
+
+  const getImageUrl = memoize((attributes) => {
+    return get(attributes, "image.data.attributes.url");
+  });
+
+  const category = data
+    ? map(data, (obj) => {
+        const attributes = get(obj, "attributes");
+        const url = getImageUrl(attributes);
+        return { ...attributes, url };
+      })
+    : [];
 
   return (
     <div>
@@ -32,13 +31,24 @@ export default function Category() {
               "We offer an extensive range of tapes, with professional solutions which always meet the highest q."
             }
           />
-          <Grid no={4}>
-            {catalog.map((data, i) => (
-              <CategoryBox name={"Duct Tapes"} src={data.img} key={i} />
-            ))}
-          </Grid>
+          {category && category.length > 0 ? (
+            <Grid no={4}>
+              {category.map((data, i) => (
+                <CategoryBox
+                  name={data.name}
+                  slug={data.slug}
+                  src={`http://localhost:1337${data.url}`}
+                  key={i}
+                />
+              ))}
+            </Grid>
+          ) : (
+            <AlertMessage text={"No Category found!"} />
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Category;

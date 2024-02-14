@@ -7,9 +7,9 @@ import Icon from "@/component/general/icon";
 
 import Link from "next/link";
 
-const CategoryBox: React.FC<Product> = ({ name, src }) => {
+const CategoryBox: React.FC<Product> = ({ name, src, slug }) => {
   return (
-    <Link href="/category/1" className={`${style.box}`}>
+    <Link href={`/category/${slug}`} className={`${style.box}`}>
       <div className={style.boxImage}>
         <Image
           src={src}

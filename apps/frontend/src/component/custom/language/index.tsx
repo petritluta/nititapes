@@ -4,49 +4,25 @@ import SelectComponent from "../../general/select";
 import Image from "next/image";
 import { Locale } from "@/i18n-config";
 import { SelectOptions } from "@/@types/general/Select";
+import getLanguages from "@/fetchServices/client/language";
+import { map } from "lodash";
 
 const Language = () => {
   const pathName = usePathname();
   const router = useRouter();
 
-  const languageOptions = [
-    {
-      value: "al",
-      label: (
-        <Image
-          src="/icon/albania-flag.png"
-          alt="Niti Tape"
-          width={22}
-          height={22}
-          priority
-        />
-      ),
-    },
-    {
-      value: "en",
-      label: (
-        <Image
-          src="/icon/united-kingdom-flag.png"
-          alt="Niti Tape"
-          width={20}
-          height={20}
-          priority
-        />
-      ),
-    },
-    {
-      value: "de",
-      label: (
-        <Image
-          src="/icon/germany-flag.png"
-          alt="Niti Tape"
-          width={20}
-          height={20}
-          priority
-        />
-      ),
-    },
-  ];
+  const { data, isLoading, error } = getLanguages();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  // Transform the array to the react-select option format
+  const languageOptions = data
+    ? map(data, (locale) => ({
+        value: locale.code,
+        label: locale.name,
+      }))
+    : [];
 
   const selectLanguage = (locale: Locale) => {
     if (!pathName) return "/";
