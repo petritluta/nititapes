@@ -1,25 +1,39 @@
 import CatalogBox from "@/component/custom/catalog";
 import Grid from "@/component/general/grid";
 import Heading from "@/component/general/heading";
+import getShelf from "@/fetchServices/server/page/shelf";
+import { NextPage } from "next";
+import { get } from "lodash";
 
-export default function Shelf() {
+const Shelf: NextPage<any> = async ({ params: { lang } }) => {
+  const { data } = await getShelf();
+
+  const shelfData = data ? get(data, "attributes") : [];
+
+  const shelfDataPlan = [
+    shelfData.development.data.attributes,
+    shelfData.representation.data.attributes,
+    shelfData.reality.data.attributes,
+  ];
   return (
     <div>
       <div className="container">
         <div>
-          <Heading
-            title={"Shelf Planning"}
-            desc={
-              "We offer an extensive range of tapes, with professional solutions which always meet the highest quality standards. The HPX brand came into existence in 2004 and since then quality improvement and development are our absolute priority. Moreover, we can look back on more than 25 years of experience."
-            }
-          />
+          <Heading title={shelfData.title} desc={shelfData.description} />
           <Grid no={3}>
-            {[...Array(3)].map((e, i) => (
-              <CatalogBox name={"Duct Tapes "} src={"/image/2.jpg"} key={i} />
+            {shelfDataPlan.map((data, i) => (
+              <CatalogBox
+                name={data.name}
+                src={`http://localhost:1337${data.url}`}
+                key={i}
+                slug=""
+              />
             ))}
           </Grid>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Shelf;

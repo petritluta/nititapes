@@ -1,0 +1,18 @@
+.contactInfo {
+  /* border-left: 1px solid var(--border); */
+  padding: 50px;
+  background-color: var(--light-main);
+  border-radius: var(--button-radius);
+  -webkit-border-radius: var(--button-radius);
+  -moz-border-radius: var(--button-radius);
+  -ms-border-radius: var(--button-radius);
+  -o-border-radius: var(--button-radius);
+}
+.contactRight {
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+  margin: 50px auto;
+  color: var(--main);
+  flex-wrap: wrap;
+}

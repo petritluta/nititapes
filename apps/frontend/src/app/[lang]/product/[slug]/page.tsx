@@ -5,6 +5,7 @@ import Link from "next/link";
 import Heading from "@/component/general/heading";
 import ProductBox from "@/component/custom/product/box";
 import Gallery from "@/component/general/gallery";
+import Icon from "@/component/general/icon";
 export default function ProductDetails() {
   const images = [
     {
@@ -87,6 +88,15 @@ export default function ProductDetails() {
             <Link href="" className="mainLink">
               Download Data Sheet
             </Link>
+            <a href="" className="flex gap10" style={{ margin: "20px 0px", textTransform:'uppercase' }}>
+              <Icon
+                src="/icon/phone-white.svg"
+                type={"main"}
+                width={20}
+                height={20}
+              />
+              Kontaktoni tani
+            </a>
           </div>
         </div>
         <div>
@@ -108,12 +118,12 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
-      <div style={{ margin: "50px 0px" }} className="grayWrapper">
+      <div style={{ margin: "50px 0px" }}>
         <div className="container">
           <h1 className="title">Related Products</h1>
           <Grid no={3}>
             {[...Array(3)].map((e, i) => (
-              <ProductBox name={"Duct Tapes "} src={"/image/2.jpg"} key={i} />
+              <ProductBox name={"Duct Tapes "} src={"/image/2.jpg"} key={i} slug=""/>
             ))}
           </Grid>
         </div>

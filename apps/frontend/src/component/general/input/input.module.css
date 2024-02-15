@@ -1,18 +1,27 @@
-.input{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
-.input input{
-    padding:10px;
-    border-radius: var(--button-radius);
-    border: 1px solid var(--border);
-    outline: none;
-    -webkit-border-radius: var(--button-radius);
-    -moz-border-radius: var(--button-radius);
-    -ms-border-radius: var(--button-radius);
-    -o-border-radius: var(--button-radius);
+.label {
+  font-size: var(--font-xs);
+  padding-left: 10px;
+  text-transform: capitalize;
 }
-.error{
-    font-size: 12px;
+.input input,
+.input textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--button-radius);
+  border: 1px solid var(--border);
+  outline: none;
+  -webkit-border-radius: var(--button-radius);
+  -moz-border-radius: var(--button-radius);
+  -ms-border-radius: var(--button-radius);
+  -o-border-radius: var(--button-radius);
 }
+.error {
+  font-size: 12px;
+}
+
+ 

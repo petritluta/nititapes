@@ -27,7 +27,7 @@
     align-items: center;
     justify-content: center;
     width: 80px;
-    background-color: rgb(250, 231, 254);
+    background-color: var(--light-main);
     border-radius: var(--button-radius);
     height: 80px;
     -webkit-border-radius: var(--button-radius);

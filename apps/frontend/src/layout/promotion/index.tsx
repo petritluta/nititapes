@@ -8,7 +8,7 @@ export default function Promotion() {
       <Heading title={"Promotions"} />
       <Grid no={2}>
         {[...Array(2)].map((e, i) => (
-          <ProductPromotion name={"Duct Tapes "} src={"/image/2.jpg"} key={i} />
+          <ProductPromotion name={"Duct Tapes "} src={"/image/2.jpg"} key={i} slug={'/'}/>
         ))}
       </Grid>
     </div>

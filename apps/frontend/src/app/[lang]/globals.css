@@ -11,8 +11,8 @@
   --black: #181823;
   --gray: #969696;
   --white: #fff;
-  --main: #fc6736;
-  --light-main: #efecec;
+  --main: #000c8b;
+  --light-main: #f4f4f4;
 
   --font-xxs: 11px;
   --font-xs: 13px;
@@ -51,7 +51,7 @@ a {
 }
 
 .container {
-  width: 90%;
+  width: 80%;
   margin: auto;
 }
 .relative {
@@ -112,12 +112,20 @@ a {
   -ms-border-radius: var(--button-radius);
   -o-border-radius: var(--button-radius);
 }
-
+.swiper-button-next,
+.swiper-button-prev{
+  width: 30px !important;
+  height: 30px !important;
+  color:var(--main) !important;
+}
 @media only screen and (max-width: 900px) {
   h1 {
     font-size: var(--font-ex-lg);
   }
   h2 {
     font-size: var(--font-md);
+  }
+  .container {
+    width: 90%;
   }
 }

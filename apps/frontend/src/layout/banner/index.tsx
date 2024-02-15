@@ -4,6 +4,7 @@ import Link from "next/link";
 import Anchor from "@/component/general/anchor";
 9;
 const Banner = ({ title, desc }: { title: string; desc: string }) => {
+  console.log("DESC", desc);
   return (
     <div
       className={styles.homeBanner}

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { FieldProps } from "formik";
 import style from "./input.module.css";
 
@@ -11,6 +11,7 @@ interface CustomInputProps {
   errors: string;
   disabled: boolean;
   showErrorText: boolean;
+  isTextArea: boolean;
 }
 
 const InputComponent: React.FC<FieldProps & CustomInputProps> = ({
@@ -23,6 +24,7 @@ const InputComponent: React.FC<FieldProps & CustomInputProps> = ({
   errors,
   disabled = false,
   showErrorText = true,
+  isTextArea = false,
 }) => {
   return (
     <div className={`${style.input} ${parentStyle}`}>
@@ -30,13 +32,20 @@ const InputComponent: React.FC<FieldProps & CustomInputProps> = ({
         {label && <label>{label}</label>}
         <span>{sublabel}</span>
       </div>
-      <input
-        {...field}
-        placeholder={placeholder}
-        type={type}
-        disabled={disabled}
-        className={errors?.length > 0 ? style.errorBorder : style.noErrorBorder}
-      />
+      {isTextArea ? (
+        <textarea {...field} rows={15}></textarea>
+      ) : (
+        <input
+          {...field}
+          placeholder={placeholder}
+          type={type}
+          disabled={disabled}
+          className={
+            errors?.length > 0 ? style.errorBorder : style.noErrorBorder
+          }
+        />
+      )}
+
       {showErrorText && errors?.length > 0 ? (
         <span className={style.error}>{errors}</span>
       ) : null}

@@ -8,6 +8,7 @@
   -moz-border-radius: var(--button-radius);
   -ms-border-radius: var(--button-radius);
   -o-border-radius: var(--button-radius);
+  text-transform: uppercase;
 }
 
 .main {

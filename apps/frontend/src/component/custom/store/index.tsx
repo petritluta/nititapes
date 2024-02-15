@@ -1,12 +1,14 @@
 import Image from "next/image";
 import style from "./store.module.css";
-export default function StoreList() {
+import { head } from "lodash";
+
+export default function StoreList({ data }: any) {
   return (
     <div className={style.list}>
       <div className="flex gap10">
-        <div className={style.logo}>124</div>
+        <div className={style.logo}>{!data.logo ? head(data.name) : ""}</div>
         <div>
-          <h1>Business Name</h1>
+          <h1>{data.name}</h1>
           <div>
             <Image
               src="/icon/location.png"
@@ -15,11 +17,15 @@ export default function StoreList() {
               height={15}
               priority
             />
-            <span>Prishtine, Kosova</span>
+            <span>
+              {data.city}, {data.country}
+            </span>
           </div>
         </div>
       </div>
-      <a href="">Get Directions</a>
+      <a href={data.direction} target="_blank">
+        Get Directions
+      </a>
     </div>
   );
 }

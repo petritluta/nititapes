@@ -38,24 +38,24 @@ const Home: NextPage<HomeProps> = async ({ params: { lang } }) => {
       name: "Packaging",
     },
   ];
-
   return (
     <main>
-      {/* <Banner
-        title={data.attributes.banner_title}
-        desc={data.attributes.banner_title}
-      /> */}
+      <Banner
+        title={data?.attributes?.banner_title}
+        desc={data?.attributes?.welcome_desc}
+      />
       <div className="container">
-        {/* <Heading
+        <Heading
           title={data.attributes.welcome_title}
           desc={data.attributes.welcome_desc}
-        /> */}
+        />
         <Grid no={3}>
           {homeProducts.map((data, i) => (
             <ProductBox
               name={data.name}
               src={`/image/products/product${i + 1}.jpeg`}
               key={i}
+              slug=""
             />
           ))}
         </Grid>

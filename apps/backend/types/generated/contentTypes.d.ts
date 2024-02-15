@@ -781,6 +781,110 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCatalogCatalog extends Schema.CollectionType {
+  collectionName: 'catalogs';
+  info: {
+    singularName: 'catalog';
+    pluralName: 'catalogs';
+    displayName: 'Catalog';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    document: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    year: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cover: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::catalog.catalog',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::catalog.catalog',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::catalog.catalog',
+      'oneToMany',
+      'api::catalog.catalog'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiClientClient extends Schema.CollectionType {
+  collectionName: 'clients';
+  info: {
+    singularName: 'client';
+    pluralName: 'clients';
+    displayName: 'Client';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    city: Attribute.String;
+    country: Attribute.String;
+    icon: Attribute.Media;
+    direction: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::client.client',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::client.client',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiContactUsContactUs extends Schema.CollectionType {
   collectionName: 'contact_uses';
   info: {
@@ -836,12 +940,6 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
           localized: true;
         };
       }>;
-    banner_description: Attribute.Blocks &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     banner_image: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -855,6 +953,12 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
         };
       }>;
     welcome_desc: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    banner_description: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1241,49 +1345,38 @@ export interface ApiPromotionPromotion extends Schema.CollectionType {
   };
 }
 
-export interface ApiTestSingleTypeTestSingleType extends Schema.SingleType {
-  collectionName: 'test_single_types';
+export interface ApiShelfPlannerShelfPlanner extends Schema.SingleType {
+  collectionName: 'shelf_planners';
   info: {
-    singularName: 'test-single-type';
-    pluralName: 'test-single-types';
-    displayName: 'Test single type';
+    singularName: 'shelf-planner';
+    pluralName: 'shelf-planners';
+    displayName: 'Shelf Planner';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
   attributes: {
-    title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    title: Attribute.String;
+    development: Attribute.Media & Attribute.Required;
+    description: Attribute.Text;
+    representation: Attribute.Media;
+    reality: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::test-single-type.test-single-type',
+      'api::shelf-planner.shelf-planner',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::test-single-type.test-single-type',
+      'api::shelf-planner.shelf-planner',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::test-single-type.test-single-type',
-      'oneToMany',
-      'api::test-single-type.test-single-type'
-    >;
-    locale: Attribute.String;
   };
 }
 
@@ -1305,6 +1398,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::catalog.catalog': ApiCatalogCatalog;
+      'api::client.client': ApiClientClient;
       'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::navigation.navigation': ApiNavigationNavigation;
@@ -1312,7 +1407,7 @@ declare module '@strapi/types' {
       'api::product-attribute.product-attribute': ApiProductAttributeProductAttribute;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
       'api::promotion.promotion': ApiPromotionPromotion;
-      'api::test-single-type.test-single-type': ApiTestSingleTypeTestSingleType;
+      'api::shelf-planner.shelf-planner': ApiShelfPlannerShelfPlanner;
     }
   }
 }
