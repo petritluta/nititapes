@@ -48,8 +48,8 @@ export default function Footer() {
             {" "}
             <p>About Us</p>
             <ul>
-              <li>First</li>
-              <li>First</li>
+              <li>About Us</li>
+              <li>Contact</li>
               <li>First</li>
             </ul>
           </div>
