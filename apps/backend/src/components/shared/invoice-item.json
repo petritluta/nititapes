@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_shared_invoice_items",
+  "info": {
+    "displayName": "Invoice Item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "articleCode": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "dispatchDate": {
+      "type": "date"
+    },
+    "quantity": {
+      "type": "decimal",
+      "required": true
+    },
+    "unit": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "decimal",
+      "required": true
+    },
+    "netPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "total": {
+      "type": "decimal"
+    }
+  }
+}

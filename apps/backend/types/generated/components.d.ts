@@ -15,6 +15,24 @@ export interface SharedAttributeValue extends Schema.Component {
   };
 }
 
+export interface SharedInvoiceItem extends Schema.Component {
+  collectionName: 'components_shared_invoice_items';
+  info: {
+    displayName: 'Invoice Item';
+    description: '';
+  };
+  attributes: {
+    articleCode: Attribute.String;
+    description: Attribute.Text;
+    dispatchDate: Attribute.Date;
+    quantity: Attribute.Decimal & Attribute.Required;
+    unit: Attribute.String;
+    weight: Attribute.Decimal & Attribute.Required;
+    netPrice: Attribute.Decimal & Attribute.Required;
+    total: Attribute.Decimal;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -70,6 +88,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'shared.attribute-value': SharedAttributeValue;
+      'shared.invoice-item': SharedInvoiceItem;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }

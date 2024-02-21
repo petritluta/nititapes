@@ -988,6 +988,49 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
   };
 }
 
+export interface ApiInvoiceInvoice extends Schema.CollectionType {
+  collectionName: 'invoices';
+  info: {
+    singularName: 'invoice';
+    pluralName: 'invoices';
+    displayName: 'Invoice';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    customerCode: Attribute.String & Attribute.Required;
+    documentNumber: Attribute.String;
+    invoice_date: Attribute.Date;
+    subTotal: Attribute.Decimal;
+    vat: Attribute.Decimal;
+    total: Attribute.Decimal;
+    termsDelivery: Attribute.String;
+    paymentMethod: Attribute.String;
+    items: Attribute.Component<'shared.invoice-item', true>;
+    downloadLink: Attribute.String & Attribute.Private;
+    netWeight: Attribute.Decimal;
+    vatRate: Attribute.Decimal & Attribute.DefaultTo<0.18>;
+    token: Attribute.UID & Attribute.Private;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::invoice.invoice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::invoice.invoice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNavigationNavigation extends Schema.CollectionType {
   collectionName: 'navigations';
   info: {
@@ -1402,6 +1445,7 @@ declare module '@strapi/types' {
       'api::client.client': ApiClientClient;
       'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::homepage.homepage': ApiHomepageHomepage;
+      'api::invoice.invoice': ApiInvoiceInvoice;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::product.product': ApiProductProduct;
       'api::product-attribute.product-attribute': ApiProductAttributeProductAttribute;
