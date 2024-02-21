@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invoices",
+  "info": {
+    "singularName": "invoice",
+    "pluralName": "invoices",
+    "displayName": "Invoice",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customerCode": {
+      "type": "string",
+      "required": true
+    },
+    "documentNumber": {
+      "type": "string"
+    },
+    "invoice_date": {
+      "type": "date"
+    },
+    "subTotal": {
+      "type": "decimal"
+    },
+    "vat": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "termsDelivery": {
+      "type": "string"
+    },
+    "paymentMethod": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.invoice-item"
+    },
+    "downloadLink": {
+      "type": "string",
+      "private": true
+    },
+    "netWeight": {
+      "type": "decimal"
+    },
+    "vatRate": {
+      "type": "decimal",
+      "default": 0.18
+    },
+    "token": {
+      "type": "uid",
+      "private": true
+    }
+  }
+}
