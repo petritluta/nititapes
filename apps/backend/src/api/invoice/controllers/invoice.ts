@@ -10,7 +10,8 @@ export default factories.createCoreController('api::invoice.invoice', ({ strapi 
     const { token } = ctx.query;
 
     const entity = await strapi.db.query('api::invoice.invoice').findOne({
-      where: { token }
+      where: { token },
+      populate: ['items']
     });
     if (!entity) return ctx.notFound();
     const sanitizedEntity = await this.sanitizeOutput(entity, ctx);
