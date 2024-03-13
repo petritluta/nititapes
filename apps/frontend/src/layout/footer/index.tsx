@@ -10,7 +10,7 @@ export default function Footer() {
     <div className="container">
       <div className={style.locationIcon}>
         <Image
-          src="/icon/location.png"
+          src="/icon/location.svg"
           alt="Niti Tape"
           width={70}
           height={70}

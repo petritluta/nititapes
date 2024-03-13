@@ -1,6 +1,6 @@
 export interface Product {
-    src: string;
-    name: string;
-    slug:string
-  }
-  
+  src: string;
+  title: string;
+  description: string;
+  slug: string;
+}

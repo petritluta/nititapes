@@ -7,17 +7,19 @@
 
 export default async function fetchData<T = any>(
   route: string,
-  locale:string = 'sq',
+  shouldAddLocale: boolean = true,
+  locale: string = "sq",
   fetchOptions?: RequestInit
 ): Promise<T> {
-  // const baseUrl = process.env.API_BASE_URL || 'http://localhost:1337/api${route}?locale=sq';
-  const baseUrl = `http://localhost:1337/api${route}&locale=${locale}`;
+  const baseUrl = shouldAddLocale
+    ? `http://localhost:1337/api${route}&locale=${locale}`
+    : `http://localhost:1337/api${route}`;
   try {
     const response: Response = await fetch(`${baseUrl}`, fetchOptions);
+
     if (!response.ok) {
-      return [];
       // throw new Error(
-        // `API call failed: ${response.status} - ${response.statusText}`
+      //   `API call failed: ${response.status} - ${response.statusText}`
       // );
     }
 

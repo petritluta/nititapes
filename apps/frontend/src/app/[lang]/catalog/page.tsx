@@ -20,8 +20,6 @@ const Catalog: NextPage<any> = async ({ params: { lang } }) => {
       })
     : [];
 
-  console.log("katalog", catalog);
-
   return (
     <div>
       <div className="container">

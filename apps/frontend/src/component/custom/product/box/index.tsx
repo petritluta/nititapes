@@ -6,36 +6,34 @@ import Grid from "@/component/general/grid";
 import Icon from "@/component/general/icon";
 
 import Link from "next/link";
+import { STRAPI_BASE_URL } from "@/constants/const";
 
-const ProductBox: React.FC<Product> = ({ name, src }) => {
+const ProductBox: React.FC<Product> = ({
+  product,
+}: {
+  product: { attributes: Product };
+}) => {
+  const { attributes } = product;
   return (
     <Link href="/product/1" className={`${style.box}`}>
       <Grid no={2}>
         <div className={style.boxImage}>
           <Image
-            src={src}
-            alt={name}
+            src={`${STRAPI_BASE_URL}${attributes.thumbnail.data.attributes.formats.medium.url}`}
+            alt={`Product`}
             layout="fill"
             objectFit="contain"
             priority
           />
         </div>
         <div className={style.boxData}>
-          <h2>{name}</h2>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla quod
-            facili...
-          </p>
+          <h2>{attributes.title}</h2>
+          <p>{attributes.description} </p>
           <div className={`flex gap10 ${style.iconColumn}`}>
             <div className="flex gap5">
+              <Icon src="/icon/mail.svg" type={"main"} width={15} height={15} />
               <Icon
-                src="/icon/mail-white.svg"
-                type={"main"}
-                width={15}
-                height={15}
-              />
-              <Icon
-                src="/icon/phone-white.svg"
+                src="/icon/phone.svg"
                 type={"main"}
                 width={15}
                 height={15}

@@ -1,7 +1,6 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
 import SelectComponent from "../../general/select";
-import Image from "next/image";
 import { Locale } from "@/i18n-config";
 import { SelectOptions } from "@/@types/general/Select";
 import getLanguages from "@/fetchServices/client/language";
@@ -28,7 +27,7 @@ const Language = () => {
     if (!pathName) return "/";
     const segments = pathName.split("/");
     segments[1] = locale;
-    router.push(segments.join("/"));
+    router.replace(segments.join("/"));
   };
 
   const getDefault = (): SelectOptions => {

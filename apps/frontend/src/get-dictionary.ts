@@ -4,8 +4,8 @@ import type { Locale } from "./i18n-config";
 const dictionaries = {
   en: () => import("./dictionaries/en.json").then((module) => module.default),
   de: () => import("./dictionaries/de.json").then((module) => module.default),
-  al: () => import("./dictionaries/al.json").then((module) => module.default),
+  sq: () => import("./dictionaries/al.json").then((module) => module.default),
 };
 
 export const getDictionary = async (locale: Locale) =>
-  dictionaries[locale]?.() ?? dictionaries.al();
+  dictionaries[locale]?.() ?? dictionaries.sq();

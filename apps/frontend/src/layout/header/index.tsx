@@ -7,7 +7,7 @@ import Language from "@/component/custom/language";
 import getHeader from "@/fetchServices/server/layout/header";
 
 export default async function Header() {
-  const headerData = await getHeader();
+  // const headerData = await getHeader();
 
   return (
     <header className={styles.header}>
